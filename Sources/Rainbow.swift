@@ -103,6 +103,7 @@ public enum Rainbow {
         ProcessInfo.processInfo.environment["NO_COLOR"] == nil ||
         (ProcessInfo.processInfo.environment["FORCE_COLOR"] != nil) == true
         print("rainbow \(enabled)")
+        return enabled
         }
     }
 

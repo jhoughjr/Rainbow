@@ -98,7 +98,13 @@ public enum Rainbow {
     public static var outputTarget = OutputTarget.current
     
     /// Enable `Rainbow` to colorize string or not. Default is `true`, unless the `NO_COLOR` environment variable is set.
-    public static var enabled = ProcessInfo.processInfo.environment["NO_COLOR"] == nil
+    public static var enabled: Bool { get {
+        let enabled =
+        ProcessInfo.processInfo.environment["NO_COLOR"] == nil ||
+        (ProcessInfo.processInfo.environment["FORCE_COLOR"] != nil) == true
+        print("rainbow \(enabled)")
+        }
+    }
 
     public static func extractEntry(for string: String) -> Entry {
         return ConsoleEntryParser(text: string).parse()
